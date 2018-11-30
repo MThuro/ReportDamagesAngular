@@ -2,7 +2,8 @@
     <div class="collapse" id="navbarToggleExternalContent">
       <div class="bg-dark p-4">
         <ul data-activates="slide-out">
-
+          <li>Customers</li>
+          <li>Logout</li>
         </ul>
       </div>
     </div>
@@ -18,10 +19,10 @@
   </p>
   <form>
     Username
-    <input type=text name=username><br>
+    <input #username type=text name=username><br>
     Password
-    <input type="password" name=password>
+    <input #password type="password" name=password>
   </form>
-  <button id="login">Login</button>
+  <button id="login" (click)="login(username.value, password.value);" routerLink="/customers">Login</button>
 </div>
 <router-outlet></router-outlet>
