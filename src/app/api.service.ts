@@ -19,12 +19,13 @@ export class ApiService {
     
    }
 
-   public getToken(user: User): Observable<User>{
-      debugger;
-      return this.http.post<User>(API_URL, user, httpOptions).pipe(
+   public getToken(user: User): boolean{
+      this.http.post<User>(API_URL, user, httpOptions).pipe(
         tap((user: User) => console.log(user.username)),
         catchError(this.handleError<User>('getToken'))
       );
+      //change according to successful request
+      return true;
    }
 
    private handleError<T> (operation = 'operation', result?: T) {

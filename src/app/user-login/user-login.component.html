@@ -1,0 +1,13 @@
+<div style="text-align:center">
+  <p class="login-p">
+    Please login with your Magento credentials.
+  </p>
+  <form class="input-form">
+    Username
+    <input #username type=text name=username><br>
+    Password
+    <input #password type="password" name=password>
+  </form>
+  <button id="login" (click)="login(username.value, password.value);">Login</button>
+</div>
+<router-outlet></router-outlet>

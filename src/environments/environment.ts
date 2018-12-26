@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
 
-  apiUrl: 'http://ourtaberna-en.jsktech.feathertest.com/area51/rest/V1/customer/token'
+  apiUrl: 'http://ourtaberna-en.jsktech.feathertest.com/rest/V1/customer/token'
 };
 
 /*
