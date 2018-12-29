@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ticket-list.component.css']
 })
 export class TicketListComponent implements OnInit {
-
   constructor() { }
 
+
   ngOnInit() {
+    document.getElementById("addButton").hidden = false;
+    document.getElementById("headerTitel").innerText = "Ticket List";
   }
 
 }

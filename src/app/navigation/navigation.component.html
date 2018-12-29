@@ -1,11 +1,14 @@
 <div class="content-container" [class.is-mobile]
 ="mobileQuery.matches">
-  <mat-toolbar color="primary" class="toolbar">
+  <mat-toolbar color="primary" class="toolbar" id="toolbar">
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <h1 class="app-name">Report Damages</h1>
-      <div><img class="logo" src="/assets/Logo1.jpg"></div>
+    <h1 class="app-name" id="headerTitel"></h1>
+      <div><img class="logo" src="/assets/logo_no_background.png"></div> 
+      <div><img class="add" 
+        id="addButton"
+        src="/assets/icons/baseline_add_white_18dp.png" (click)="addTicket()"></div>
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
@@ -17,7 +20,7 @@
     </mat-sidenav>
 
     <mat-sidenav-content class="sidenav-content">
-      <router-outlet></router-outlet>>
+      <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

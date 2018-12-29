@@ -3,11 +3,13 @@
     Please login with your Magento credentials.
   </p>
   <form class="input-form">
-    Username
-    <input #username type=text name=username><br>
-    Password
-    <input #password type="password" name=password>
+    <mat-form-field>
+        <input matInput #username type=text placeholder="Username" name=username>
+    </mat-form-field><br>
+    <mat-form-field>
+        <input matInput #password type="password" placeholder="Password" name=password>
+    </mat-form-field>
   </form>
-  <button id="login" (click)="login(username.value, password.value);">Login</button>
+  <button mat-button id="login" (click)="login(username.value, password.value);">Login</button>
 </div>
 <router-outlet></router-outlet>

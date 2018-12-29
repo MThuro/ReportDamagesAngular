@@ -15,6 +15,8 @@ export class UserLoginComponent implements OnInit {
   constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
+    document.getElementById("addButton").hidden = true;
+    document.getElementById("headerTitel").innerText = "Report Damages";
   }
 
   login(username: string, password: string): void {

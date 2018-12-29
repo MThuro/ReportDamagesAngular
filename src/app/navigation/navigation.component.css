@@ -38,4 +38,10 @@
         margin-left: 10px;
   }
 
+  .add{
+    position: absolute;
+    right: 0;
+    top: 10px;
+  }
+
   

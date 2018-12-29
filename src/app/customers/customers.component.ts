@@ -10,6 +10,8 @@ export class CustomersComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    document.getElementById("addButton").hidden = true;
+    document.getElementById("headerTitel").innerText = "Select a customer";
   }
 
 }
