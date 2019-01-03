@@ -1,0 +1,79 @@
+{
+  "configVersion": 1,
+  "index": "https://MThuro.github.io/ReportDamagesAngular/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "https://MThuro.github.io/ReportDamagesAngular/4.eb181f8c7fcda0c87094.js",
+        "https://MThuro.github.io/ReportDamagesAngular/favicon.ico",
+        "https://MThuro.github.io/ReportDamagesAngular/index.html",
+        "https://MThuro.github.io/ReportDamagesAngular/main.8b5fdc4b339841a236c5.js",
+        "https://MThuro.github.io/ReportDamagesAngular/polyfills.20ab2d163684112c2aba.js",
+        "https://MThuro.github.io/ReportDamagesAngular/runtime.426453762139ab835962.js",
+        "https://MThuro.github.io/ReportDamagesAngular/styles.0509ba01367fc63aec4d.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "https://MThuro.github.io/ReportDamagesAngular/assets/Logo1.jpg",
+        "https://MThuro.github.io/ReportDamagesAngular/assets/icons/baseline_add_white_18dp.png",
+        "https://MThuro.github.io/ReportDamagesAngular/assets/icons/icon-128x128.png",
+        "https://MThuro.github.io/ReportDamagesAngular/assets/icons/icon-144x144.png",
+        "https://MThuro.github.io/ReportDamagesAngular/assets/icons/icon-152x152.png",
+        "https://MThuro.github.io/ReportDamagesAngular/assets/icons/icon-192x192.png",
+        "https://MThuro.github.io/ReportDamagesAngular/assets/icons/icon-384x384.png",
+        "https://MThuro.github.io/ReportDamagesAngular/assets/icons/icon-512x512.png",
+        "https://MThuro.github.io/ReportDamagesAngular/assets/icons/icon-72x72.png",
+        "https://MThuro.github.io/ReportDamagesAngular/assets/icons/icon-96x96.png",
+        "https://MThuro.github.io/ReportDamagesAngular/assets/logo_no_background.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "https://MThuro.github.io/ReportDamagesAngular/4.eb181f8c7fcda0c87094.js": "abd42791d89f504ded5590ede598ca1a10108f33",
+    "https://MThuro.github.io/ReportDamagesAngular/assets/Logo1.jpg": "a4159ec7960246a6e528efd9ed5c2d98381db9ad",
+    "https://MThuro.github.io/ReportDamagesAngular/assets/icons/baseline_add_white_18dp.png": "efc30c03b8c7e92d30e4f55dba976e094fbb1590",
+    "https://MThuro.github.io/ReportDamagesAngular/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "https://MThuro.github.io/ReportDamagesAngular/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "https://MThuro.github.io/ReportDamagesAngular/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "https://MThuro.github.io/ReportDamagesAngular/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "https://MThuro.github.io/ReportDamagesAngular/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "https://MThuro.github.io/ReportDamagesAngular/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "https://MThuro.github.io/ReportDamagesAngular/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "https://MThuro.github.io/ReportDamagesAngular/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "https://MThuro.github.io/ReportDamagesAngular/assets/logo_no_background.png": "4f5ef7a5563fb0e4f5dfe32685eee204ee061c23",
+    "https://MThuro.github.io/ReportDamagesAngular/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
+    "https://MThuro.github.io/ReportDamagesAngular/index.html": "0904ef0c4ded03ae0298e0355de8bca20f46e1bd",
+    "https://MThuro.github.io/ReportDamagesAngular/main.8b5fdc4b339841a236c5.js": "2f9d879dd1e678d1efcf6b3ac1d48c0c6472a711",
+    "https://MThuro.github.io/ReportDamagesAngular/polyfills.20ab2d163684112c2aba.js": "ce68d153e9b9b6d26b625069c0ee99ae09c6f255",
+    "https://MThuro.github.io/ReportDamagesAngular/runtime.426453762139ab835962.js": "ba82189e04a6bfa0b818508af7f4b9b9ac25a7a6",
+    "https://MThuro.github.io/ReportDamagesAngular/styles.0509ba01367fc63aec4d.css": "549d48ffd4177e8b10f8e67863954d93fb7387f6"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
