@@ -4,7 +4,14 @@ import { MatDatepickerModule,
         MatFormFieldModule,
         MatInputModule,
         MatSelectModule, 
-        MatCardModule} from '@angular/material';
+        MatCardModule,
+        MatSnackBarModule,
+        MatSidenavModule, 
+        MatToolbarModule, 
+        MatButtonModule, 
+        MatIconModule, 
+        MatListModule,
+        MatExpansionModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -15,6 +22,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     MatSelectModule,
     MatCardModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatSidenavModule,
+    MatExpansionModule,
     BrowserAnimationsModule
   ],
   exports: [
@@ -24,6 +38,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     MatSelectModule,
     MatCardModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatSidenavModule,
+    MatExpansionModule,
     BrowserAnimationsModule
   ],
   providers: [ MatDatepickerModule ],

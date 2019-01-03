@@ -1,3 +1,10 @@
 div {
     color: black;
 }
+.progress{
+    color: green;
+}
+.status{
+    display: inline;
+    float: right;
+}

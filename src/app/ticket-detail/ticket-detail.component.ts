@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RoutesRecognized } from '@angular/router';
+import { ticket } from './../ticket';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router, RoutesRecognized, ActivatedRoute } from '@angular/router';
 import { filter, pairwise } from 'rxjs/operators';
+import { TicketService } from '../ticket.service';
 
 
 @Component({
@@ -9,22 +11,18 @@ import { filter, pairwise } from 'rxjs/operators';
   styleUrls: ['./ticket-detail.component.css']
 })
 export class TicketDetailComponent implements OnInit {
+  @Input() ticket: ticket;
+  id: string;
   products = [
      'Product 1',
       'Product 2'];
-  previousUrl: string;
-  constructor(public router: Router) { 
+  constructor(public router: Router, private route: ActivatedRoute, private ticketService: TicketService) { 
   }
   ngOnInit() {
-    debugger;
     document.getElementById("addButton").hidden = true;
-    if(document.getElementById("headerTitel").innerText == "Select a Customer"){
-      document.getElementById("headerTitel").innerText = "Create new Ticket";
-    };
+    this.id = this.route.snapshot.paramMap.get('id');
+    document.getElementById("headerTitel").innerText = "Ticket " + this.id;
+    this.ticketService.getTicket(this.id).subscribe(ticket => this.ticket = ticket);
   }
-
-  save(): void{
-
-  };
 
 }

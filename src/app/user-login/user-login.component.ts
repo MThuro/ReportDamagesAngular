@@ -3,6 +3,7 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { User } from './../user';
 import { ApiService } from './../api.service';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-user-login',
@@ -10,9 +11,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent implements OnInit {
-  debugger;
   users: User[];
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, private router: Router, public snackbar: MatSnackBar) { }
 
   ngOnInit() {
     document.getElementById("addButton").hidden = true;
@@ -21,10 +21,12 @@ export class UserLoginComponent implements OnInit {
 
   login(username: string, password: string): void {
     if(!username || !password){
+      this.snackbar.open("Please enter your username and password", "Dismiss",{
+        duration: 2000,
+      });
       return;
     }
     let success = this.apiService.getToken({ username, password } as User);
-    debugger;
     if(success=true){
       this.router.navigateByUrl('/ticket-list');
     }

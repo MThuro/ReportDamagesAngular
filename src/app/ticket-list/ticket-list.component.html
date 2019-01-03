@@ -1,8 +1,38 @@
-<mat-card routerLink="/ticket-detail">
-  <div id="product ">Product 1</div>
-  <div id="quantity">Quantity 10</div>
-  <div id="Date added">07.12.2018</div>
-  <div id="status">In Progress</div>
-</mat-card>
+<mat-accordion>
+    <mat-expansion-panel [expanded]="true" (opened)="panelNewOpenState=true"
+    (closed)="panelProgessOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                New
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-card *ngFor="let ticket of ticketsNew" routerLink="/ticket-detail/{{ticket.id}}">
+            <mat-card-title>{{ticket.summary}}</mat-card-title>
+          <mat-card-content>
+              <div id="product">{{ticket.product}}</div>
+              <div id="quantity">Quantity: {{ticket.quantity}}</div>
+              <div id="Date added">Created at {{ticket.creationDate | date: 'yyyy-MM-dd' }}</div>
+              <div id="status" class="status">{{ticket.ticketStatus}}</div>
+          </mat-card-content>
+        </mat-card>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelProgessOpenState = true"
+    (closed)="panelProgessOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+              In Progress
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-card *ngFor="let ticket of ticketsProgress" routerLink="/ticket-detail/{{ticket.id}}">
+            <mat-card-title>{{ticket.summary}}</mat-card-title>
+          <mat-card-content>
+              <div id="product">{{ticket.product}}</div>
+              <div id="quantity">Quantity: {{ticket.quantity}}</div>
+              <div id="Date added">Created at {{ticket.creationDate | date }}</div>
+              <div id="status" class="status progress">{{ticket.ticketStatus}}</div>
+          </mat-card-content>
+        </mat-card>
+    </mat-expansion-panel>
+</mat-accordion>
 <router-outlet></router-outlet>
 

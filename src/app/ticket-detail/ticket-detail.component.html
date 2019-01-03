@@ -1,47 +1,46 @@
 <form class="ticket-form">
     <mat-form-field class="full-width">
-        <input matInput [matDatepicker]="picker1" placeholder="Start Date">
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #picker1></mat-datepicker>
+    <input matInput [matDatepicker]="picker1" placeholder="Start Date" #startDate>
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker touchUi #picker1></mat-datepicker>
     </mat-form-field>
     <mat-form-field class="full-width">
-        <input matInput [matDatepicker]="picker2" placeholder="End Date">
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #picker2></mat-datepicker>
+    <input matInput [matDatepicker]="picker2" placeholder="End Date">
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker touchUi #picker2></mat-datepicker>
     </mat-form-field>
     <mat-form-field class="full-width">
-        <mat-select placeholder="Ticket Status">
-          <mat-option value="New">New</mat-option>
-          <mat-option value="In Progress">In Progress</mat-option>
-          <mat-option value="Fixed">Fixed</mat-option>
-        </mat-select>
+    <mat-select placeholder="Ticket Status" value="{{ticket.ticketStatus}}">
+    <mat-option value="New">New</mat-option>
+    <mat-option value="In Progress">In Progress</mat-option>
+    <mat-option value="Fixed">Fixed</mat-option>
+    </mat-select>
     </mat-form-field>
     <mat-form-field class="full-width">
-        <mat-select placeholder="Product Status">
-          <mat-option value="Repaired">Repaired</mat-option>
-          <mat-option value="Procured">Procured</mat-option>
-          <mat-option value="Replaced">Replaced</mat-option>
-        </mat-select>
+    <mat-select placeholder="Product Status" value="{{ticket.productStatus}}">
+    <mat-option value="Repaired">Repaired</mat-option>
+    <mat-option value="Procured">Procured</mat-option>
+    <mat-option value="Replaced">Replaced</mat-option>
+    </mat-select>
     </mat-form-field>
     <mat-form-field class="full-width">
-        <mat-select placeholder="Product">
-          <mat-option *ngFor="let product of products" value="product">{{product}}</mat-option>
-        </mat-select>
+    <mat-select placeholder="Product" id="product" value="{{ticket.product}}">
+    <mat-option *ngFor="let product of products" value="{{ticket.product}}">{{product}}</mat-option>
+    </mat-select>
     </mat-form-field>
     <mat-form-field class="full-width">
-          <input matInput type="number" placeholder="Quantity">
+    <input matInput type="number" placeholder="Quantity" value="{{ticket.quantity}}">
     </mat-form-field>
     <mat-form-field class="full-width">
-        <input matInput type="number" placeholder="Time needed (in h)">
-   </mat-form-field>
-   <mat-form-field class="full-width">
-      <input matInput type="text" placeholder="Summary">
- </mat-form-field>
- <mat-form-field class="full-width">
-   <textarea matInput placeholder="Description"></textarea>
- </mat-form-field>
-<mat-form-field class="full-width">
-    <textarea matInput placeholder="Comments"></textarea>
-  </mat-form-field>
- </form>
- <button mat-button id="save" (click)="save();">Save</button>
+    <input matInput type="number" placeholder="Time needed (in h)" value="{{ticket.time}}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+    <input matInput type="text" placeholder="Summary" value="{{ticket.summary}}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+    <textarea matInput placeholder="Description">{{ticket.description}}</textarea>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+    <textarea matInput placeholder="Comments">{{ticket.comments}}</textarea>
+    </mat-form-field>
+    </form>
