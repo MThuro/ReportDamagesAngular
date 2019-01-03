@@ -1,6 +1,5 @@
 <mat-accordion>
-    <mat-expansion-panel [expanded]="true" (opened)="panelNewOpenState=true"
-    (closed)="panelProgessOpenState = false">
+    <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
             <mat-panel-title>
                 New
@@ -16,8 +15,7 @@
           </mat-card-content>
         </mat-card>
     </mat-expansion-panel>
-    <mat-expansion-panel (opened)="panelProgessOpenState = true"
-    (closed)="panelProgessOpenState = false">
+    <mat-expansion-panel>
         <mat-expansion-panel-header>
             <mat-panel-title>
               In Progress

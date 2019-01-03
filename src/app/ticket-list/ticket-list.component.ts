@@ -1,5 +1,4 @@
 import { ticket } from './../ticket';
-import { TICKETS } from './../mock-tickets';
 import { Component, OnInit } from '@angular/core';
 import { TicketService } from './../ticket.service';
 
@@ -11,8 +10,6 @@ import { TicketService } from './../ticket.service';
 export class TicketListComponent implements OnInit {
   ticketsNew : ticket[];
   ticketsProgress: ticket[];
-  panelNewOpenState = false;
-  panelProgressOpenState = false;
 
   constructor(private ticketService: TicketService) { }
 
@@ -21,7 +18,6 @@ export class TicketListComponent implements OnInit {
     document.getElementById("addButton").hidden = false;
     document.getElementById("headerTitel").innerText = "Ticket List";
     this.getTickets();
-    this.panelNewOpenState = true;
   }
 
   getTickets(): void{
