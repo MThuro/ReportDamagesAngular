@@ -24,7 +24,7 @@
           <mat-card *ngFor="let ticket of ticketsProgress" routerLink="/ticket-detail/{{ticket.id}}">
             <mat-card-title>{{ticket.summary}}</mat-card-title>
           <mat-card-content>
-              <div id="product">{{ticket.product}}</div>
+              <div id="product">{{findProduct(ticket.product)}}</div>
               <div id="quantity">Quantity: {{ticket.quantity}}</div>
               <div id="Date added">Created at {{ticket.creationDate.toDate() | date }}</div>
               <div id="status" class="status progress">{{ticket.ticketStatus}}</div>
@@ -40,7 +40,7 @@
           <mat-card *ngFor="let ticket of ticketsFixed" routerLink="/ticket-detail/{{ticket.id}}">
             <mat-card-title>{{ticket.summary}}</mat-card-title>
           <mat-card-content>
-              <div id="product">{{ticket.product}}</div>
+              <div id="product">{{findProduct(ticket.product)}}</div>
               <div id="quantity">Quantity: {{ticket.quantity}}</div>
               <div id="Date added">Created at {{ticket.creationDate.toDate() | date }}</div>
               <div id="status" class="status">{{ticket.ticketStatus}}</div>

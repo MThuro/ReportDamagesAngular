@@ -1,8 +1,8 @@
+import { TicketService } from './../ticket.service';
 import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
-import { ArgumentOutOfRangeError } from 'rxjs';
-import { MediaMatcher } from '@angular/cdk/layout';
-import { RouterModule, Routes, Router, ActivatedRoute } from '@angular/router';
-import { TicketDetailComponent } from '../ticket-detail/ticket-detail.component';
+import { Router} from '@angular/router';
+import { environment } from './../../environments/environment.prod';
+
 
 @Component({
   selector: 'app-navigation',
@@ -10,29 +10,30 @@ import { TicketDetailComponent } from '../ticket-detail/ticket-detail.component'
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-  mobileQuery: MediaQueryList;
-  private ticketDetail: TicketDetailComponent;
-  private _mobileQueryListener: () => void;
-  id: string;
+  private id: string;
+  env = environment;
+  link: {
+    text: string,
+    path: string,
+  }
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private router: Router, private route: ActivatedRoute) { 
-
-    this.mobileQuery = media.matchMedia('(max-width: 600px');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+  constructor(changeDetectorRef: ChangeDetectorRef, private router: Router, 
+    private ticketService: TicketService) { 
   }
 
   ngOnInit() {
   }
 
-  ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
-  }
-  
-
   addTicket(): void {
     this.router.navigateByUrl('/customers');
   }
 
+  deleteTicket(): void{
+    this.ticketService.deleteTicket();
+    this.router.navigateByUrl('/ticket-list');
+  }
+  getLoginStatus(): boolean{
+    return JSON.parse(localStorage.getItem("login"));
+  }
 
 }

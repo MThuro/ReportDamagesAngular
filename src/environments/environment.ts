@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  loggedIn: false,
 
   apiUrl: 'http://ourtaberna-en.jsktech.feathertest.com/rest/V1/customer/token',
 

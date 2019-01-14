@@ -18,7 +18,9 @@ export class AppComponent {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    firebase.initializeApp(environment.firebase);
+    if (!firebase.apps.length) {
+      firebase.initializeApp(environment.firebase);
+    }
     if(localStorage.getItem("logon") == "true"){
       this.router.navigateByUrl("/ticket-list");
     }else{

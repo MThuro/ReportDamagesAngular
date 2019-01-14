@@ -13,6 +13,7 @@ export class TicketService {
   ticketsNew: Observable<ticket[]>;
   ticketsProgress: Observable<ticket[]>;
   ticketsFixed: Observable<ticket[]>;
+  ticketID: string;
   constructor(private afs: AngularFirestore) {
     this.ticketCollection = afs.collection<ticket>('tickets');
    }
@@ -61,16 +62,21 @@ export class TicketService {
   }
 
   getTicket(id: string): Observable<ticket>{
+    this.setTicketID(id);
     this.ticketDocument = this.ticketCollection.doc(id);
     return this.ticketDocument.valueChanges();
   }
 
-  updateTicket(id: string, ticket: ticket){
+  updateTicket(id: string, ticket: ticket): void{
     this.ticketCollection.doc(id).update(ticket);
   }
 
-  deleteTicket(id: string){
-    this.ticketCollection.doc(id).delete();
+  deleteTicket(): void{
+    this.ticketCollection.doc(this.ticketID).delete();
+  }
+
+  setTicketID(id:string): void{
+    this.ticketID = id;
   }
 
 }
