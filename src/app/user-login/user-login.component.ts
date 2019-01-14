@@ -29,6 +29,9 @@ export class UserLoginComponent implements OnInit {
     }
     let success = this.apiService.getToken({ username, password } as User);
     if(success=true){
+      localStorage.setItem("username", username);
+      localStorage.setItem("logon", "true");
+      localStorage.setItem("Date", JSON.stringify(new Date()));
       this.router.navigateByUrl('/ticket-list');
     }
   };

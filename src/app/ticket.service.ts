@@ -53,9 +53,11 @@ export class TicketService {
   }
   
   addTicket(ticket: ticket){
-    const id = this.afs.createId();
-    ticket.id = id;
-    this.ticketCollection.add(ticket);
+    let id = JSON.parse(localStorage.getItem("id"));
+    id = id + 1;
+    localStorage.setItem("id", id);
+    ticket.id = JSON.stringify(id);
+    this.ticketCollection.doc(ticket.id).set(ticket);
   }
 
   getTicket(id: string): Observable<ticket>{

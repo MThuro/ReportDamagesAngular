@@ -20,6 +20,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { UserLogoutComponent } from './user-logout/user-logout.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
     TicketListComponent,
     NavigationComponent,
     TicketDetailComponent,
-    TicketCreationComponent
+    TicketCreationComponent,
+    UserLogoutComponent
   ],
   imports: [
     BrowserModule,

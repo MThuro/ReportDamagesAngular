@@ -31,7 +31,6 @@ export class TicketCreationComponent implements OnInit {
   save(startDate: Date, endDate: Date, ticketStatus: string, productStatus: string,
     product: string, quantity: number, time: number, summary: string, 
     description: string, comments: string, customer: string): void {
-      debugger;
       customer = this.customer.id;
       let ticket: ticket = {
         id: "",
