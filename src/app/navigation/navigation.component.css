@@ -16,8 +16,9 @@
     z-index: 2;
   }
   
-  h1.app-name {
+  span.app-name {
     margin-left: 8px;
+    flex: 1 1 auto;
   }
   
   .sidenav-container {
@@ -38,10 +39,9 @@
         margin-left: 10px;
   }
 
-  .add{
-    position: absolute;
-    right: 0;
-    top: 10px;
+  .action{
+    padding: 0 14px;
   }
+
 
   

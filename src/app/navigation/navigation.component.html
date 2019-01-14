@@ -1,14 +1,17 @@
 <div class="content-container" [class.is-mobile]
 ="mobileQuery.matches">
   <mat-toolbar color="primary" class="toolbar" id="toolbar">
-    <button mat-icon-button (click)="snav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <h1 class="app-name" id="headerTitel"></h1>
-      <div><img class="logo" src="/assets/logo_no_background.png"></div> 
-      <div><img class="add" 
-        id="addButton"
-        src="/assets/icons/baseline_add_white_18dp.png" (click)="addTicket()"></div>
+        <button mat-icon-button (click)="snav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span class="app-name" id="headerTitel"></span>
+            <div><img class="logo" src="/assets/logo_no_background.png"></div> 
+            <button mat-icon-button id="addButton" (click)="addTicket()">
+              <mat-icon class="action">add</mat-icon>
+            </button>
+            <button mat-icon-button id="deleteButton">
+                <mat-icon class="action">delete</mat-icon>
+              </button>
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">

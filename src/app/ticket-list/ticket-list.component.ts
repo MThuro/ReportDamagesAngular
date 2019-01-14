@@ -1,3 +1,5 @@
+import { PRODUCTS } from './../mock-products';
+import { Product } from './../product';
 import { ticket } from './../ticket';
 import { Component, OnInit } from '@angular/core';
 import { TicketService } from './../ticket.service';
@@ -8,13 +10,16 @@ import { TicketService } from './../ticket.service';
   styleUrls: ['./ticket-list.component.css']
 })
 export class TicketListComponent implements OnInit {
+  products = PRODUCTS;
   ticketsNew : ticket[];
   ticketsProgress: ticket[];
+  ticketsFixed: ticket[];
 
   constructor(private ticketService: TicketService) { }
 
 
   ngOnInit() {
+    document.getElementById("deleteButton").hidden = true;
     document.getElementById("addButton").hidden = false;
     document.getElementById("headerTitel").innerText = "Ticket List";
     this.getTickets();
@@ -25,5 +30,12 @@ export class TicketListComponent implements OnInit {
     .subscribe(tickets => this.ticketsNew = tickets);
     this.ticketService.getTicketsInProgress()
     .subscribe(tickets=> this.ticketsProgress = tickets);
+    this.ticketService.getTicketsFixed()
+    .subscribe(tickets=> this.ticketsFixed = tickets);
+  }
+
+  findProduct(id: string){
+    let product = this.products.find(o => o.id === id);
+    return product.description;
   }
 }

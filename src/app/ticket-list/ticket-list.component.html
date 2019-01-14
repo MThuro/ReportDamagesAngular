@@ -8,15 +8,15 @@
         <mat-card *ngFor="let ticket of ticketsNew" routerLink="/ticket-detail/{{ticket.id}}">
             <mat-card-title>{{ticket.summary}}</mat-card-title>
           <mat-card-content>
-              <div id="product">{{ticket.product}}</div>
+              <div id="product">{{findProduct(ticket.product)}}</div>
               <div id="quantity">Quantity: {{ticket.quantity}}</div>
-              <div id="Date added">Created at {{ticket.creationDate | date: 'yyyy-MM-dd' }}</div>
+              <div id="Date added">Created at {{ticket.creationDate.toDate() | date }}</div>
               <div id="status" class="status">{{ticket.ticketStatus}}</div>
           </mat-card-content>
         </mat-card>
     </mat-expansion-panel>
     <mat-expansion-panel>
-        <mat-expansion-panel-header>
+    <mat-expansion-panel-header>
             <mat-panel-title>
               In Progress
             </mat-panel-title>
@@ -26,8 +26,24 @@
           <mat-card-content>
               <div id="product">{{ticket.product}}</div>
               <div id="quantity">Quantity: {{ticket.quantity}}</div>
-              <div id="Date added">Created at {{ticket.creationDate | date }}</div>
+              <div id="Date added">Created at {{ticket.creationDate.toDate() | date }}</div>
               <div id="status" class="status progress">{{ticket.ticketStatus}}</div>
+          </mat-card-content>
+        </mat-card>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+              Fixed
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-card *ngFor="let ticket of ticketsFixed" routerLink="/ticket-detail/{{ticket.id}}">
+            <mat-card-title>{{ticket.summary}}</mat-card-title>
+          <mat-card-content>
+              <div id="product">{{ticket.product}}</div>
+              <div id="quantity">Quantity: {{ticket.quantity}}</div>
+              <div id="Date added">Created at {{ticket.creationDate.toDate() | date }}</div>
+              <div id="status" class="status">{{ticket.ticketStatus}}</div>
           </mat-card-content>
         </mat-card>
     </mat-expansion-panel>

@@ -1,7 +1,8 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { ArgumentOutOfRangeError } from 'rxjs';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { RouterModule, Routes, Router } from '@angular/router';
+import { RouterModule, Routes, Router, ActivatedRoute } from '@angular/router';
+import { TicketDetailComponent } from '../ticket-detail/ticket-detail.component';
 
 @Component({
   selector: 'app-navigation',
@@ -10,10 +11,11 @@ import { RouterModule, Routes, Router } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
   mobileQuery: MediaQueryList;
-  
+  private ticketDetail: TicketDetailComponent;
   private _mobileQueryListener: () => void;
+  id: string;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private router: Router) { 
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private router: Router, private route: ActivatedRoute) { 
 
     this.mobileQuery = media.matchMedia('(max-width: 600px');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -31,4 +33,6 @@ export class NavigationComponent implements OnInit {
   addTicket(): void {
     this.router.navigateByUrl('/customers');
   }
+
+
 }

@@ -1,9 +1,9 @@
 
 export class ticket{
     id: string;
-    creationDate: Date;
-    startDate: Date;
-    endDate: Date;
+    creationDate;
+    startDate;
+    endDate;
     ticketStatus: string;
     productStatus: string;
     product: string;
@@ -12,4 +12,5 @@ export class ticket{
     summary: string;
     description: string;
     comments: string;
+    customer: string;
 }

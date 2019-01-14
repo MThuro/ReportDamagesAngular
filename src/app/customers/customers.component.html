@@ -1,7 +1,7 @@
-<mat-card  routerLink="/ticket-creation">
-  <div id="customer-name">Scott Acton</div>
-  <div id="email">actonscott@countryretreats.co.uk</div>
-  <div id="street">Church Stretton, SY6 6QQ</div>
-  <div id="country">United Kingdom</div>
+<mat-card  *ngFor="let customer of customers" routerLink="/ticket-creation/{{customer.id}}">
+  <div id="customer-name">{{customer.name}}</div>
+  <div id="email">{{customer.email}}</div>
+  <div id="street">{{customer.street + " " + customer.postcode + customer.city}}</div>
+  <div id="country">{{customer.country}}</div>
 </mat-card>
 <router-outlet></router-outlet>
