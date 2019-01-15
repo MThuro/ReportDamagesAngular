@@ -1,3 +1,5 @@
+import { AngularFireStorage } from 'angularfire2/storage';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,11 +17,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { TicketDetailComponent } from './ticket-detail/ticket-detail.component';
 import { MaterialModule } from './material.module';
 import { TicketCreationComponent } from './ticket-creation/ticket-creation.component';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFireFunctionsModule } from '@angular/fire/functions';
-import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AngularFireModule } from 'angularfire2';
 import { UserLogoutComponent } from './user-logout/user-logout.component';
 
 @NgModule({
@@ -41,14 +39,10 @@ import { UserLogoutComponent } from './user-logout/user-logout.component';
     LayoutModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
-    AngularFireFunctionsModule,
-    AngularFireMessagingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 
   ],
-  providers: [],
+  providers: [AngularFirestore, AngularFireStorage],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

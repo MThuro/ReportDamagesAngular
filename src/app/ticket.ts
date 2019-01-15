@@ -1,5 +1,5 @@
 
-export class ticket{
+export class Ticket{
     id: string;
     creationDate;
     startDate;
@@ -13,4 +13,5 @@ export class ticket{
     description: string;
     comments: string;
     customer: string;
+    image: string;
 }

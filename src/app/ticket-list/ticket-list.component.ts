@@ -1,6 +1,6 @@
 import { PRODUCTS } from './../mock-products';
 import { Product } from './../product';
-import { ticket } from './../ticket';
+import { Ticket } from './../ticket';
 import { Component, OnInit } from '@angular/core';
 import { TicketService } from './../ticket.service';
 
@@ -11,9 +11,9 @@ import { TicketService } from './../ticket.service';
 })
 export class TicketListComponent implements OnInit {
   products = PRODUCTS;
-  ticketsNew : ticket[];
-  ticketsProgress: ticket[];
-  ticketsFixed: ticket[];
+  ticketsNew : Ticket[];
+  ticketsProgress: Ticket[];
+  ticketsFixed: Ticket[];
 
   constructor(private ticketService: TicketService) { }
 

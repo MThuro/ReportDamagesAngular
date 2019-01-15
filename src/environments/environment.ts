@@ -14,7 +14,7 @@ export const environment = {
     authDomain: "report-damages.firebaseapp.com",
     databaseURL: "https://report-damages.firebaseio.com",
     projectId: "report-damages",
-    storageBucket: "",
+    storageBucket: "report-damages.appspot.com",
     messagingSenderId: "145444048279"
   }
 };

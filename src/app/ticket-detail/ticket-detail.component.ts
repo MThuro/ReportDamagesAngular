@@ -1,6 +1,7 @@
+import { AngularFireStorage } from 'angularfire2/storage';
 import { TicketService } from './../ticket.service';
 import { FormControl } from '@angular/forms';
-import { ticket } from './../ticket';
+import { Ticket } from './../ticket';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PRODUCTS } from '../mock-products';
@@ -12,15 +13,18 @@ import { PRODUCTS } from '../mock-products';
   styleUrls: ['./ticket-detail.component.css']
 })
 export class TicketDetailComponent implements OnInit {
-  @Input() ticket: ticket;
+  @Input() ticket: Ticket;
   @Input() startdate: Date;
   id: string;
   products = PRODUCTS;
   startDateForm = new FormControl();
   endDateForm = new FormControl();
   productStatusForm = new FormControl();
+  selectedFile: File;
+  oldURL: string;
 
-  constructor(public router: Router, private route: ActivatedRoute, private ticketService: TicketService) { 
+  constructor(public router: Router, private route: ActivatedRoute, 
+    private ticketService: TicketService, private afStorage: AngularFireStorage) { 
   }
   ngOnInit() {
     document.getElementById("addButton").hidden = true;
@@ -46,7 +50,7 @@ export class TicketDetailComponent implements OnInit {
     if(endDate != ""){
       this.ticket.endDate = new Date(endDate);
     }else{
-      endDate = endDate;
+      this.ticket.endDate = endDate;
     }
     this.ticket.ticketStatus = ticketStatus;
     this.ticket.productStatus = productStatus;
@@ -56,7 +60,37 @@ export class TicketDetailComponent implements OnInit {
     this.ticket.summary = summary;
     this.ticket.description = description;
     this.ticket.comments = comments;
-    this.ticketService.updateTicket(this.id, this.ticket);
+
+    if(this.ticket.image == "" && this.oldURL != undefined){
+      this.afStorage.storage.refFromURL(this.oldURL).delete();
+      this.oldURL = "";
+    }
+    if(this.selectedFile != null){
+      this.uploadFile();
+    }else{
+      this.ticketService.updateTicket(this.id, this.ticket);
+    };
     this.router.navigateByUrl('/ticket-list');
   }
+
+  deleteImage(): void{
+    this.oldURL = this.ticket.image;
+    this.ticket.image = "";
+  }
+
+  onFileChanged(event): void{
+    this.selectedFile = event.target.files[0];
+  }
+  
+  uploadFile(): void{
+    debugger;
+    this.afStorage.upload(this.selectedFile.name, this.selectedFile);
+    let fileRef = this.afStorage.ref(this.selectedFile.name);
+    fileRef.getDownloadURL().subscribe( url => {
+      debugger;
+      this.ticket.image = url;
+      this.ticketService.updateTicket(this.id, this.ticket);
+    }
+    )
+   }
 }

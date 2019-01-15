@@ -49,6 +49,16 @@
     </mat-form-field>
     </fieldset>
 </form>
+<input #imageInput *ngIf="!ticket.image"
+type="file"
+accept="image/*"
+(change)=(onFileChanged($event))>
+<div *ngIf="ticket.image" class="thumbnail">
+   <img class="image"  src={{ticket.image}}>
+   <button mat-icon-button (click)="deleteImage()"> 
+        <mat-icon>clear</mat-icon>
+   </button>
+</div>
 <button mat-button id="update" (click)="update(startDate.value, endDate.value, ticketStatus.value,
  productStatus.value, product.value, quantity.value, time.value, summary.value, 
  description.value, comments.value);">Update</button>

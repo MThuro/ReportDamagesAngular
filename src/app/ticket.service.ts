@@ -1,39 +1,40 @@
+import { AngularFireStorage } from 'angularfire2/storage';
 import { map } from 'rxjs/operators';
-import { ticket } from './ticket';
+import { Ticket } from './ticket';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 @Injectable({
   providedIn: 'root'
 })
 export class TicketService {
-  private ticketCollection: AngularFirestoreCollection<ticket>;
-  private ticketDocument: AngularFirestoreDocument<ticket>;
-  tickets: Observable<ticket[]>;
-  ticketsNew: Observable<ticket[]>;
-  ticketsProgress: Observable<ticket[]>;
-  ticketsFixed: Observable<ticket[]>;
+  private ticketCollection: AngularFirestoreCollection<Ticket>;
+  private ticketDocument: AngularFirestoreDocument<Ticket>;
+  tickets: Observable<Ticket[]>;
+  ticketsNew: Observable<Ticket[]>;
+  ticketsProgress: Observable<Ticket[]>;
+  ticketsFixed: Observable<Ticket[]>;
   ticketID: string;
   constructor(private afs: AngularFirestore) {
-    this.ticketCollection = afs.collection<ticket>('tickets');
+    this.ticketCollection = afs.collection<Ticket>('tickets');
    }
 
-  getNewTickets(): Observable<ticket[]>{
-    let ticketsNewRef = this.afs.collection<ticket>('tickets', ref => ref.where('ticketStatus', '==', "New"));
+  getNewTickets(): Observable<Ticket[]>{
+    let ticketsNewRef = this.afs.collection<Ticket>('tickets', ref => ref.where('ticketStatus', '==', "New"));
     this.ticketsNew = ticketsNewRef.snapshotChanges().pipe(map(actions=> {
       return actions.map(a => {
-        const data = a.payload.doc.data() as ticket;
+        const data = a.payload.doc.data() as Ticket;
         const id = a.payload.doc.id;
         return {id, ...data};
          });
         }));
     return this.ticketsNew;
   }
-  getTicketsInProgress(): Observable<ticket[]>{
-    let ticketsProgressRef = this.afs.collection<ticket>('tickets', ref => ref.where('ticketStatus', '==', "In Progress"));
+  getTicketsInProgress(): Observable<Ticket[]>{
+    let ticketsProgressRef = this.afs.collection<Ticket>('tickets', ref => ref.where('ticketStatus', '==', "In Progress"));
     this.ticketsProgress = ticketsProgressRef.snapshotChanges().pipe(map(actions=> {
       return actions.map(a => {
-        const data = a.payload.doc.data() as ticket;
+        const data = a.payload.doc.data() as Ticket;
         const id = a.payload.doc.id;
         return {id, ...data};
          });
@@ -41,11 +42,11 @@ export class TicketService {
     return this.ticketsProgress;
   }
 
-  getTicketsFixed(): Observable<ticket[]>{
-    let ticketsFixedRef = this.afs.collection<ticket>('tickets', ref => ref.where('ticketStatus', '==', "Fixed"));
+  getTicketsFixed(): Observable<Ticket[]>{
+    let ticketsFixedRef = this.afs.collection<Ticket>('tickets', ref => ref.where('ticketStatus', '==', "Fixed"));
     this.ticketsFixed = ticketsFixedRef.snapshotChanges().pipe(map(actions=> {
       return actions.map(a => {
-        const data = a.payload.doc.data() as ticket;
+        const data = a.payload.doc.data() as Ticket;
         const id = a.payload.doc.id;
         return {id, ...data};
          });
@@ -53,7 +54,8 @@ export class TicketService {
     return this.ticketsFixed; 
   }
   
-  addTicket(ticket: ticket){
+  addTicket(ticket: Ticket){
+    debugger;
     let id = JSON.parse(localStorage.getItem("id"));
     id = id + 1;
     localStorage.setItem("id", id);
@@ -61,13 +63,13 @@ export class TicketService {
     this.ticketCollection.doc(ticket.id).set(ticket);
   }
 
-  getTicket(id: string): Observable<ticket>{
+  getTicket(id: string): Observable<Ticket>{
     this.setTicketID(id);
     this.ticketDocument = this.ticketCollection.doc(id);
     return this.ticketDocument.valueChanges();
   }
 
-  updateTicket(id: string, ticket: ticket): void{
+  updateTicket(id: string, ticket: Ticket): void{
     this.ticketCollection.doc(id).update(ticket);
   }
 
