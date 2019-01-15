@@ -38,11 +38,16 @@ export class TicketDetailComponent implements OnInit {
       });
   }
 
-  update(startDate: Date, endDate: Date, ticketStatus: string, productStatus: string,
+  update(startDate: Date, endDate: string, ticketStatus: string, productStatus: string,
     product: string, quantity: number, time: number, summary: string, 
     description: string, comments: string): void{
     this.ticket.startDate = new Date(startDate);
-    this.ticket.endDate = new Date(endDate);
+    debugger;
+    if(endDate != ""){
+      this.ticket.endDate = new Date(endDate);
+    }else{
+      endDate = endDate;
+    }
     this.ticket.ticketStatus = ticketStatus;
     this.ticket.productStatus = productStatus;
     this.ticket.product = product;
