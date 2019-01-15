@@ -29,11 +29,11 @@ export class AppComponent {
       firebase.initializeApp(environment.firebase);
     }
     let storage = firebase.storage();
-    if(localStorage.getItem("logon") == "true"){
-      this.router.navigateByUrl("/ticket-list");
-    }else{
-      this.router.navigateByUrl("/user-login");
-    }
+    //if(localStorage.getItem("logon") == "true"){
+      //this.router.navigateByUrl("/ticket-list");
+    //}else{
+      //this.router.navigateByUrl("/user-login");
+    //}
     let id = localStorage.getItem("id");
     if(id == null){
       localStorage.setItem("id", JSON.stringify(0));
