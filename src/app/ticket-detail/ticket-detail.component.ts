@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { TicketService } from './../ticket.service';
 import { FormControl } from '@angular/forms';
@@ -24,7 +25,8 @@ export class TicketDetailComponent implements OnInit {
   oldURL: string;
 
   constructor(public router: Router, private route: ActivatedRoute, 
-    private ticketService: TicketService, private afStorage: AngularFireStorage) { 
+    private ticketService: TicketService, private afStorage: AngularFireStorage,
+    public snackbar: MatSnackBar) { 
   }
   ngOnInit() {
     document.getElementById("addButton").hidden = true;
@@ -46,7 +48,12 @@ export class TicketDetailComponent implements OnInit {
     product: string, quantity: number, time: number, summary: string, 
     description: string, comments: string): void{
     this.ticket.startDate = new Date(startDate);
-    debugger;
+    if(!startDate || !ticketStatus || !product || !summary || !quantity){
+      this.snackbar.open("Please enter all mandatory fields", "Dismiss",{
+        duration: 2000,
+      });
+      return;
+    }
     if(endDate != ""){
       this.ticket.endDate = new Date(endDate);
     }else{

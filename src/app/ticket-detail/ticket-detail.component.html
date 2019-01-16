@@ -1,64 +1,61 @@
 <form class="ticket-form">
     <fieldset id="fieldset" [disabled]="ticketStatus.value == 'Fixed'">
-    <mat-form-field class="full-width">
-        <input matInput #startDate id="startDate" [matDatepicker]="picker1" placeholder="Start Date"
-        [formControl]="startDateForm"> 
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #picker1></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-        <input #endDate matInput [matDatepicker]="picker2" placeholder="End Date"
-        [formControl]="endDateForm">
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #picker2></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-        <mat-select #ticketStatus placeholder="Ticket Status" #ticketStatus value="{{ticket.ticketStatus}}"
-        [disabled]="ticketStatus.value == 'Fixed'">
-            <mat-option value="New">New</mat-option>
-            <mat-option value="In Progress">In Progress</mat-option>
-            <mat-option value="Fixed">Fixed</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-        <mat-select #productStatus id="productStatus" [disabled]="ticketStatus.value == 'Fixed'" placeholder="Product Status" value="{{ticket.productStatus}}">
-            <mat-option value="Repaired">Repaired</mat-option>
-            <mat-option value="Procured">Procured</mat-option>
-            <mat-option value="Replaced">Replaced</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-        <mat-select #product placeholder="Product" id="product" value="{{ticket.product}}" [disabled]="ticketStatus.value == 'Fixed'">
-            <mat-option *ngFor="let product of products" value="{{ticket.product}}">{{product.description}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-        <input #quantity matInput type="number" placeholder="Quantity" value="{{ticket.quantity}}">
-    </mat-form-field>
-    <mat-form-field class="full-width">
-        <input #time matInput type="number" placeholder="Time needed (in h)" value="{{ticket.time}}">
-    </mat-form-field>
-    <mat-form-field class="full-width">
-        <input #summary matInput type="text" placeholder="Summary" id="summary" value="{{ticket.summary}}">
-    </mat-form-field>
-    <mat-form-field class="full-width">
-        <textarea #description matInput placeholder="Description">{{ticket.description}}</textarea>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-        <textarea #comments matInput placeholder="Comments">{{ticket.comments}}</textarea>
-    </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput #startDate id="startDate" [matDatepicker]="picker1" placeholder="Start Date" [formControl]="startDateForm">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input #endDate matInput [matDatepicker]="picker2" placeholder="End Date" [formControl]="endDateForm">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker2></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-select #ticketStatus placeholder="Ticket Status" #ticketStatus value="{{ticket.ticketStatus}}"
+                [disabled]="ticketStatus.value == 'Fixed'">
+                <mat-option value="New">New</mat-option>
+                <mat-option value="In Progress">In Progress</mat-option>
+                <mat-option value="Fixed">Fixed</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-select #productStatus id="productStatus" [disabled]="ticketStatus.value == 'Fixed'" placeholder="Product Status"
+                value="{{ticket.productStatus}}">
+                <mat-option value="Repaired">Repaired</mat-option>
+                <mat-option value="Procured">Procured</mat-option>
+                <mat-option value="Replaced">Replaced</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-select #product placeholder="Product" id="product" value="{{ticket.product}}" [disabled]="ticketStatus.value == 'Fixed'">
+                <mat-option *ngFor="let product of products" value="{{ticket.product}}">{{product.description}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input #quantity matInput type="number" placeholder="Quantity" 
+            value="{{ticket.quantity}}" required>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input #time matInput type="number" placeholder="Time needed (in h)" value="{{ticket.time}}">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input #summary matInput type="text" placeholder="Summary" id="summary" value="{{ticket.summary}}">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <textarea #description matInput placeholder="Description">{{ticket.description}}</textarea>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <textarea #comments matInput placeholder="Comments">{{ticket.comments}}</textarea>
+        </mat-form-field>
     </fieldset>
-</form>
-<input #imageInput *ngIf="!ticket.image"
-type="file"
-accept="image/*"
-(change)=(onFileChanged($event))>
-<div *ngIf="ticket.image" class="thumbnail">
-   <img class="image"  src={{ticket.image}}>
-   <button mat-icon-button (click)="deleteImage()"> 
-        <mat-icon>clear</mat-icon>
-   </button>
-</div>
-<button mat-button id="update" (click)="update(startDate.value, endDate.value, ticketStatus.value,
+    <input id="imageInput" #imageInput *ngIf="!ticket.image" type="file" accept="image/*" (change)=(onFileChanged($event))>
+    <div *ngIf="ticket.image" class="thumbnail">
+        <img class="image" src={{ticket.image}}>
+        <button mat-icon-button (click)="deleteImage()">
+            <mat-icon>clear</mat-icon>
+        </button>
+    </div>
+    <button mat-button id="update" (click)="update(startDate.value, endDate.value, ticketStatus.value,
  productStatus.value, product.value, quantity.value, time.value, summary.value, 
  description.value, comments.value);">Update</button>
+</form>

@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material';
 import { PRODUCTS } from './../mock-products';
 import { TicketService } from './../ticket.service';
 import { Component, OnInit } from '@angular/core';
@@ -22,7 +23,8 @@ export class TicketCreationComponent implements OnInit {
   ticket: Ticket;
 
   constructor(private ticketService: TicketService, private router: Router, 
-    private route: ActivatedRoute, private afStorage: AngularFireStorage) { }
+    private route: ActivatedRoute, private afStorage: AngularFireStorage,
+    public snackbar: MatSnackBar) { }
 
   ngOnInit() {
     document.getElementById("addButton").hidden = true;
@@ -35,8 +37,18 @@ export class TicketCreationComponent implements OnInit {
   save(startDate: string, endDate, ticketStatus: string, productStatus: string,
     product: string, quantity: number, time: number, summary: string, 
     description: string, comments: string, customer: string): void {
+      if(!startDate || !ticketStatus || !product || !summary || !quantity){
+        this.snackbar.open("Please enter all mandatory fields", "Dismiss",{
+          duration: 2000,
+        });
+        return;
+      }
       if(endDate != ""){
         endDate = new Date(endDate);
+      }
+      debugger;
+      if(productStatus == undefined){
+        productStatus = "";
       }
       customer = this.customer.id;
       let ticket: Ticket = {

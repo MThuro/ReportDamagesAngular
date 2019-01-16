@@ -2,8 +2,14 @@
     min-width: 150px;
     max-width: 500px;
     width: 100%;
+    text-align: center;
+    align-items: center;
   }
   
   .full-width {
     width: 100%;
+  }
+
+  #imageInput{
+    display: block;
   }
