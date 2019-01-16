@@ -3,12 +3,12 @@
         <button mat-icon-button (click)="snav.toggle()">
             <mat-icon>menu</mat-icon>
           </button>
-          <span class="app-name" id="headerTitel"></span>
+          <span class="app-name" id="headerTitel">{{navigationService.getHeaderTitle()}}</span>
             <div><img class="logo" src="./assets/logo_no_background.png"></div> 
-            <button mat-icon-button id="addButton" (click)="addTicket()">
+            <button *ngIf="navigationService.getAddStatus()" mat-icon-button id="addButton" (click)="addTicket()">
               <mat-icon class="action">add</mat-icon>
             </button>
-            <button mat-icon-button id="deleteButton" (click)="deleteTicket()">
+            <button *ngIf="navigationService.getDeleteStatus()" mat-icon-button id="deleteButton" (click)="deleteTicket()">
                 <mat-icon class="action">delete</mat-icon>
               </button>
   </mat-toolbar>
@@ -16,8 +16,9 @@
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #snav>
       <mat-nav-list id="nav-list">
-          <a *ngIf="getLoginStatus()" routerLink="/user-login">Login</a>
-          <a *ngIf="!getLoginStatus()"  mat-list-item routerLink="/user-logout">Logout</a>
+          <a *ngIf="navigationService.getTicketListStatus()" mat-list-item routerLink="/ticket-list">Ticket List</a>
+          <a *ngIf="navigationService.getLoginStatus()" mat-list-item routerLink="/user-login">Login</a>
+          <a *ngIf="navigationService.getLogoutStatus()"  mat-list-item routerLink="/user-logout">Logout</a>
       </mat-nav-list>        
     </mat-sidenav>
 

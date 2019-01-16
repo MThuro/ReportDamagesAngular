@@ -4,6 +4,7 @@ import { User } from './../user';
 import { ApiService } from './../api.service';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+import { NavigationService } from '../navigation.service';
 
 @Component({
   selector: 'app-user-login',
@@ -12,12 +13,16 @@ import { MatSnackBar } from '@angular/material';
 })
 export class UserLoginComponent implements OnInit {
   users: User[];
-  constructor(private apiService: ApiService, private router: Router, public snackbar: MatSnackBar) { }
+  constructor(private apiService: ApiService, private router: Router, public snackbar: MatSnackBar,
+    private navigationService: NavigationService) { }
 
   ngOnInit() {
-    document.getElementById("deleteButton").hidden = true;
-    document.getElementById("addButton").hidden = true;
-    document.getElementById("headerTitel").innerText = "Report Damages";
+    this.navigationService.setLogoutStatus(false);
+    this.navigationService.setDeleteStatus(false);
+    this.navigationService.setAddStatus(false);
+    this.navigationService.setTicketListStatus(false);
+    this.navigationService.setLoginStatus(false);
+    this.navigationService.setHeaderTitle("Report Damages");
   }
 
   login(username: string, password: string): void {

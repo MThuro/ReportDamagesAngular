@@ -1,6 +1,7 @@
 import { CUSTOMERS } from './../mock-customers';
 import { Customer } from './../customer';
 import { Component, OnInit } from '@angular/core';
+import { NavigationService } from '../navigation.service';
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
@@ -8,12 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomersComponent implements OnInit {
   customers = CUSTOMERS;
-  constructor(){};
+  constructor(private navigationService: NavigationService){};
 
 
   ngOnInit() {
-    document.getElementById("addButton").hidden = true;
-    document.getElementById("headerTitel").innerText = "Select a customer";
+    this.navigationService.setHeaderTitle("Select a customer");
+    this.navigationService.setAddStatus(false);
+    this.navigationService.setDeleteStatus(false);
   }
 
 }

@@ -6,6 +6,7 @@ import { Ticket } from './../ticket';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PRODUCTS } from '../mock-products';
+import { NavigationService } from '../navigation.service';
 
 
 @Component({
@@ -26,13 +27,14 @@ export class TicketDetailComponent implements OnInit {
 
   constructor(public router: Router, private route: ActivatedRoute, 
     private ticketService: TicketService, private afStorage: AngularFireStorage,
-    public snackbar: MatSnackBar) { 
+    public snackbar: MatSnackBar, private navigationService: NavigationService) { 
   }
   ngOnInit() {
-    document.getElementById("addButton").hidden = true;
-    document.getElementById("deleteButton").hidden = false;
+    this.navigationService.setDeleteStatus(true);
+    this.navigationService.setTicketListStatus(true);
+    this.navigationService.setAddStatus(false);
     this.id = this.route.snapshot.paramMap.get('id');
-    document.getElementById("headerTitel").innerText = "Ticket " + this.id;
+    this.navigationService.setHeaderTitle("Ticket " + this.id);
     this.ticketService.getTicket(this.id).subscribe(ticket => {
       this.ticket = ticket;
       this.startDateForm.setValue(ticket.startDate.toDate());

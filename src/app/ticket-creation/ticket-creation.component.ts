@@ -1,3 +1,4 @@
+import { NavigationService } from './../navigation.service';
 import { MatSnackBar } from '@angular/material';
 import { PRODUCTS } from './../mock-products';
 import { TicketService } from './../ticket.service';
@@ -24,12 +25,11 @@ export class TicketCreationComponent implements OnInit {
 
   constructor(private ticketService: TicketService, private router: Router, 
     private route: ActivatedRoute, private afStorage: AngularFireStorage,
-    public snackbar: MatSnackBar) { }
+    public snackbar: MatSnackBar,
+    private navigationService: NavigationService) { }
 
   ngOnInit() {
-    document.getElementById("addButton").hidden = true;
-    document.getElementById("deleteButton").hidden = true;
-    document.getElementById("headerTitel").innerText = "Create new Ticket";
+    this.navigationService.setHeaderTitle("Create new Ticket");
     this.dateForm.setValue(this.date);
     this.customer.id = this.route.snapshot.paramMap.get('customer');
   }

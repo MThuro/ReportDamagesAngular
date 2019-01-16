@@ -1,3 +1,4 @@
+import { NavigationService } from './../navigation.service';
 import { PRODUCTS } from './../mock-products';
 import { Product } from './../product';
 import { Ticket } from './../ticket';
@@ -15,13 +16,16 @@ export class TicketListComponent implements OnInit {
   ticketsProgress: Ticket[];
   ticketsFixed: Ticket[];
 
-  constructor(private ticketService: TicketService) { }
+  constructor(private ticketService: TicketService, private navigationService: NavigationService) { }
 
 
   ngOnInit() {
-    document.getElementById("deleteButton").hidden = true;
-    document.getElementById("addButton").hidden = false;
-    document.getElementById("headerTitel").innerText = "Ticket List";
+    this.navigationService.setDeleteStatus(false);
+    this.navigationService.setAddStatus(true);
+    this.navigationService.setHeaderTitle("Ticket List");
+    this.navigationService.setLogoutStatus(true);
+    this.navigationService.setLoginStatus(false);
+    this.navigationService.setTicketListStatus(false);
     this.getTickets();
   }
 

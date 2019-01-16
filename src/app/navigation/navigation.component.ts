@@ -2,6 +2,7 @@ import { TicketService } from './../ticket.service';
 import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { Router} from '@angular/router';
 import { environment } from './../../environments/environment.prod';
+import { NavigationService } from '../navigation.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class NavigationComponent implements OnInit {
   }
 
   constructor(changeDetectorRef: ChangeDetectorRef, private router: Router, 
-    private ticketService: TicketService) { 
+    private ticketService: TicketService, public navigationService: NavigationService) { 
   }
 
   ngOnInit() {
@@ -33,7 +34,12 @@ export class NavigationComponent implements OnInit {
     this.router.navigateByUrl('/ticket-list');
   }
   getLoginStatus(): boolean{
-    return JSON.parse(localStorage.getItem("login"));
+    debugger;
+    if (JSON.parse(localStorage.getItem("login")) == undefined){
+      return true;
+    }else{
+      return JSON.parse(localStorage.getItem("login"));
+    };
   }
 
 }
