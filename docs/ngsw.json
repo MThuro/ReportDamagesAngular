@@ -21,6 +21,7 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
+        "/ReportDamagesAngular/assets/Logo1.jpg",
         "/ReportDamagesAngular/assets/icons/icon-128x128.png",
         "/ReportDamagesAngular/assets/icons/icon-144x144.png",
         "/ReportDamagesAngular/assets/icons/icon-152x152.png",
@@ -36,6 +37,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
+    "/ReportDamagesAngular/assets/Logo1.jpg": "a4159ec7960246a6e528efd9ed5c2d98381db9ad",
     "/ReportDamagesAngular/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "/ReportDamagesAngular/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
     "/ReportDamagesAngular/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
