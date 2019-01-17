@@ -22,7 +22,7 @@ export class UserLoginComponent implements OnInit {
     this.navigationService.setAddStatus(false);
     this.navigationService.setTicketListStatus(false);
     this.navigationService.setLoginStatus(false);
-    this.navigationService.setHeaderTitle("Report Damages");
+    this.navigationService.setHeaderTitle("Damage Report");
   }
 
   login(username: string, password: string): void {

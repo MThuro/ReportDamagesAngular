@@ -30,6 +30,11 @@ export class TicketCreationComponent implements OnInit {
 
   ngOnInit() {
     this.navigationService.setHeaderTitle("Create new Ticket");
+    this.navigationService.setTicketListStatus(true);
+    this.navigationService.setLoginStatus(false);
+    this.navigationService.setLogoutStatus(true);
+    this.navigationService.setAddStatus(false);
+    this.navigationService.setDeleteStatus(false);
     this.dateForm.setValue(this.date);
     this.customer.id = this.route.snapshot.paramMap.get('customer');
   }

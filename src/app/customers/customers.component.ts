@@ -16,6 +16,9 @@ export class CustomersComponent implements OnInit {
     this.navigationService.setHeaderTitle("Select a customer");
     this.navigationService.setAddStatus(false);
     this.navigationService.setDeleteStatus(false);
+    this.navigationService.setTicketListStatus(true);
+    this.navigationService.setLoginStatus(false);
+    this.navigationService.setLogoutStatus(true);
   }
 
 }

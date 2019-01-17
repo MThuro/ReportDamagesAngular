@@ -1,6 +1,6 @@
 {
-  "name": "angular-report-damages",
-  "short_name": "angular-report-damages",
+  "name": "Damage Report",
+  "short_name": "Damage Report",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
