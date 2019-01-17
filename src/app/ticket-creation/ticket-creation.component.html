@@ -47,7 +47,8 @@
     <input id="imageInput" #imageInput
     type="file"
     accept="image/*"
-    (change)=(onFileChanged($event))>
+    (change)=(onFileChanged($event))
+    placeholder="Select image">
   <button mat-button id="save" (click)="save(startDate.value, endDate.value, ticketStatus.value,
     productStatus.value, product.value, quantity.value, time.value, summary.value, 
     description.value, comments.value, '');">Save</button>
