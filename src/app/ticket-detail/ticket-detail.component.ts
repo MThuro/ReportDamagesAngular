@@ -40,7 +40,7 @@ export class TicketDetailComponent implements OnInit {
       this.startDateForm.setValue(ticket.startDate.toDate());
       this.endDateForm.setValue(ticket.endDate.toDate());
       if(ticket.ticketStatus == "Fixed"){
-        document.getElementById("deleteButton").hidden = true;
+        this.navigationService.setDeleteStatus(false);
         document.getElementById("update").hidden = true;
       }
       });
@@ -92,14 +92,15 @@ export class TicketDetailComponent implements OnInit {
   }
   
   uploadFile(): void{
-    debugger;
-    this.afStorage.upload(this.selectedFile.name, this.selectedFile);
-    let fileRef = this.afStorage.ref(this.selectedFile.name);
-    fileRef.getDownloadURL().subscribe( url => {
-      debugger;
-      this.ticket.image = url;
-      this.ticketService.updateTicket(this.id, this.ticket);
-    }
-    )
+    this.afStorage.upload(this.selectedFile.name, this.selectedFile).then(
+      (result) => {
+        let fileRef = this.afStorage.ref(this.selectedFile.name);
+        fileRef.getDownloadURL().subscribe( url => {
+          this.ticket.image = url;
+          this.ticketService.updateTicket(this.id, this.ticket);
+        }
+        )
+      }
+    );
    }
 }

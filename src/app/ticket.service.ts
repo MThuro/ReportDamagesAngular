@@ -55,7 +55,6 @@ export class TicketService {
   }
   
   addTicket(ticket: Ticket){
-    debugger;
     let id = JSON.parse(localStorage.getItem("id"));
     id = id + 1;
     localStorage.setItem("id", id);

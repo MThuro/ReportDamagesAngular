@@ -60,4 +60,5 @@ export class NavigationService {
   getHeaderTitle(): string{
     return this.headerTitle;
   }
+  
 }

@@ -34,7 +34,6 @@ export class NavigationComponent implements OnInit {
     this.router.navigateByUrl('/ticket-list');
   }
   getLoginStatus(): boolean{
-    debugger;
     if (JSON.parse(localStorage.getItem("login")) == undefined){
       return true;
     }else{
