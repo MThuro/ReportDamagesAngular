@@ -42,6 +42,7 @@ export class TicketCreationComponent implements OnInit {
   save(startDate: string, endDate, ticketStatus: string, productStatus: string,
     product: string, quantity: number, time: number, summary: string, 
     description: string, comments: string, customer: string): void {
+      debugger;
       if(!startDate || !ticketStatus || !product || !summary || !quantity){
         this.snackbar.open("Please enter all mandatory fields", "Dismiss",{
           duration: 2000,
@@ -90,7 +91,6 @@ export class TicketCreationComponent implements OnInit {
    let task = this.afStorage.upload(this.selectedFile.name, this.selectedFile);
    let fileRef = this.afStorage.ref(this.selectedFile.name);
    fileRef.getDownloadURL().subscribe( url => {
-     debugger;
      this.ticket.image = url;
      this.ticketService.addTicket(this.ticket);
    }
