@@ -10,6 +10,14 @@
     width: 80%;
   }
 
-  #imageInput{
-    display: block;
+  .divImageInput{
+    display: flex;
+  }
+  #imageInput {
+    margin: auto;
+    margin-bottom: 10px;
+  }
+
+  #save{
+    margin-bottom: 10px;
   }

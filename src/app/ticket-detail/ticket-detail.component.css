@@ -10,18 +10,33 @@
   }
 
 
-.thumbnail {
-  width:100px;
-  height:100px;
-  position:relative;
+  .thumbnail {
+    height: 150px;
+    display: flex;
+    text-align: center;
   }
   
   .thumbnail img {
-  max-width:100%;
-  max-height:100%;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+  }
+  #imageDelete {
+    position: absolute;
+    right: 20%;
+    display: inline-block;
+    vertical-align: middle;
   }
 
-  #imageInput{
-    display: block;
+  .divImageInput{
+    display: flex;
+  }
+  #imageInput {
+    margin: auto;
+    margin-bottom: 10px;
+  }
+
+  #update{
+    margin-bottom: 10px;
   }
   

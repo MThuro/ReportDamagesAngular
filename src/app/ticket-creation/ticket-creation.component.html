@@ -44,12 +44,14 @@
 <mat-form-field class="full-width">
     <textarea matInput placeholder="Comments" #comments></textarea>
   </mat-form-field>
-    <input id="imageInput" #imageInput
-    type="file"
-    accept="image/*"
-    (change)=(onFileChanged($event))
-    placeholder="Select image">
-  <button mat-button id="save" (click)="save(startDate.value, endDate.value, ticketStatus.value,
+  <div class="divImageInput">
+   <input id="imageInput" #imageInput
+        type="file"
+        accept="image/*"
+        (change)=(onFileChanged($event))
+        placeholder="Select image">
+  </div>
+  <button mat-raised-button id="save" (click)="save(startDate.value, endDate.value, ticketStatus.value,
     productStatus.value, product.value, quantity.value, time.value, summary.value, 
     description.value, comments.value, '');">Save</button>
  </form>

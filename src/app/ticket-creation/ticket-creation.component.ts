@@ -57,6 +57,7 @@ export class TicketCreationComponent implements OnInit {
       customer = this.customer.id;
       let ticket: Ticket = {
        id: "",
+       user: "",
        creationDate: new Date(),
        startDate: new Date(startDate),
        endDate: endDate,

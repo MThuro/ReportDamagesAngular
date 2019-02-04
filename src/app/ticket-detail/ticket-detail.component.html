@@ -48,14 +48,17 @@
             <textarea #comments matInput placeholder="Comments">{{ticket.comments}}</textarea>
         </mat-form-field>
     </fieldset>
-    <input id="imageInput" #imageInput *ngIf="!ticket.image" type="file" accept="image/*" (change)=(onFileChanged($event))>
-    <div *ngIf="ticket.image" class="thumbnail">
-        <img class="image" src={{ticket.image}}>
-        <button mat-icon-button (click)="deleteImage()">
-            <mat-icon>clear</mat-icon>
-        </button>
+    <div class="divImageInput" *ngIf="!ticket.image">
+        <input id="imageInput"  type="file" accept="image/*" (change)=(onFileChanged($event))>
     </div>
-    <button mat-button id="update" (click)="update(startDate.value, endDate.value, ticketStatus.value,
+    <div *ngIf="ticket.image" class="thumbnail">
+        <span id="imageDelete"><button mat-icon-button  (click)="deleteImage()">
+         <mat-icon>clear</mat-icon>
+        </button>
+        </span>
+        <img class="image" src={{ticket.image}}>
+    </div>
+    <button mat-raised-button id="update" (click)="update(startDate.value, endDate.value, ticketStatus.value,
  productStatus.value, product.value, quantity.value, time.value, summary.value, 
  description.value, comments.value);">Update</button>
 </form>

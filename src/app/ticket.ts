@@ -2,6 +2,7 @@
 export class Ticket{
     id: string;
     creationDate;
+    user: string;
     startDate;
     endDate;
     ticketStatus: string;
