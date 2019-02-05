@@ -4,12 +4,12 @@
   </p>
   <form class="input-form">
     <mat-form-field>
-        <input matInput #username type=text placeholder="Username" name=username>
+        <input matInput #username type=text placeholder="Username" name=username required>
     </mat-form-field><br>
     <mat-form-field>
-        <input matInput #password type="password" placeholder="Password" name=password>
+        <input matInput #password type="password" placeholder="Password" name=password required> 
     </mat-form-field>
   </form>
-  <button mat-button id="login" (click)="login(username.value, password.value);">Login</button>
+  <button mat-raised-button id="login" (click)="login(username.value, password.value);">Login</button>
 </div>
 <router-outlet></router-outlet>

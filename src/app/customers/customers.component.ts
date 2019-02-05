@@ -13,6 +13,7 @@ export class CustomersComponent implements OnInit {
 
 
   ngOnInit() {
+    //set Navigation Status for different components
     this.navigationService.setHeaderTitle("Select a customer");
     this.navigationService.setAddStatus(false);
     this.navigationService.setDeleteStatus(false);

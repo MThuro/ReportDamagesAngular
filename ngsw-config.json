@@ -22,5 +22,16 @@
         ]
       }
     }
-  ]
+  ],
+  "dataGroups": [{
+    "name": "ticket-data",
+    "urls": [
+      "/ticket-list"
+    ],
+    "cacheConfig": {
+      "strategy": "freshness",
+      "maxSize": 100,
+      "timeout": "10s"
+    }
+  }]
 }

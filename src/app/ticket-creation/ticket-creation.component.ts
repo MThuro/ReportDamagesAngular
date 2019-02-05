@@ -29,16 +29,19 @@ export class TicketCreationComponent implements OnInit {
     private navigationService: NavigationService) { }
 
   ngOnInit() {
+    //set Navigation Status for different components
     this.navigationService.setHeaderTitle("Create new Ticket");
     this.navigationService.setTicketListStatus(true);
     this.navigationService.setLoginStatus(false);
     this.navigationService.setLogoutStatus(true);
     this.navigationService.setAddStatus(false);
     this.navigationService.setDeleteStatus(false);
+    //default start date to current date
     this.dateForm.setValue(this.date);
+    //get selected customer
     this.customer.id = this.route.snapshot.paramMap.get('customer');
   }
-
+  //save ticket data to database
   save(startDate: string, endDate, ticketStatus: string, productStatus: string,
     product: string, quantity: number, time: number, summary: string, 
     description: string, comments: string, customer: string): void {
@@ -80,14 +83,15 @@ export class TicketCreationComponent implements OnInit {
       }
       this.router.navigateByUrl("/ticket-list");
   };
-
+  //save file when new file is uploaded
   onFileChanged(event): void{
     this.selectedFile = event.target.files[0];
   }
-
+  //upload File to Firebase Storage
   uploadFile(): void{
    let task = this.afStorage.upload(this.selectedFile.name, this.selectedFile).then(
      (result) => {
+       //file has been added, hence save ticket
       let fileRef = this.afStorage.ref(this.selectedFile.name);
       fileRef.getDownloadURL().subscribe( url => {
         this.ticket.image = url;

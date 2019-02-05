@@ -28,6 +28,7 @@ export class AppComponent {
     if (!firebase.apps.length) {
       firebase.initializeApp(environment.firebase);
     }
+    firebase.firestore().enablePersistence();
     let storage = firebase.storage();
     if(localStorage.getItem("logon") == "true"){
       this.router.navigateByUrl("/ticket-list");

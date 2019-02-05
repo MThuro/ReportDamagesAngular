@@ -9,7 +9,7 @@
       "urls": [
         "ReportAngularDamages/favicon.ico",
         "ReportAngularDamages/index.html",
-        "ReportAngularDamages/main.517adaf6f583d88284f2.js",
+        "ReportAngularDamages/main.4e0911842fc3b80d125e.js",
         "ReportAngularDamages/polyfills.05e428c7deb03eca82a1.js",
         "ReportAngularDamages/runtime.b57bf819d5bdce77f1c7.js",
         "ReportAngularDamages/styles.37f81cd87ec00ea22374.css"
@@ -27,8 +27,9 @@
         "ReportAngularDamages/assets/04_WB_logo_144x144.png",
         "ReportAngularDamages/assets/05_WB_logo_384x384..png",
         "ReportAngularDamages/assets/06_WB_logo_512x512.png",
-        "ReportAngularDamages/assets/Logo-152x152.png",
         "ReportAngularDamages/assets/Logo1.jpg",
+        "ReportAngularDamages/assets/WB_logo_152x152.png",
+        "ReportAngularDamages/assets/WB_logo_192x192.png",
         "ReportAngularDamages/assets/icons/icon-128x128.png",
         "ReportAngularDamages/assets/icons/icon-144x144.png",
         "ReportAngularDamages/assets/icons/icon-152x152.png",
@@ -42,7 +43,19 @@
       "patterns": []
     }
   ],
-  "dataGroups": [],
+  "dataGroups": [
+    {
+      "name": "ticket-data",
+      "patterns": [
+        "\\/ticket-list"
+      ],
+      "strategy": "freshness",
+      "maxSize": 100,
+      "maxAge": 0,
+      "timeoutMs": 10000,
+      "version": 1
+    }
+  ],
   "hashTable": {
     "ReportAngularDamages/assets/01_WB_logo_72x72.png": "5e5085ecbbea4535e08f8b86e6afc6d59cab1d7d",
     "ReportAngularDamages/assets/02_WB_logo_96x96.png": "36d7439060da9cc6413ed93d318ee48daa8dda36",
@@ -50,8 +63,9 @@
     "ReportAngularDamages/assets/04_WB_logo_144x144.png": "3abd38c2721f22c923f03057ef91fe4dd6b5ede0",
     "ReportAngularDamages/assets/05_WB_logo_384x384..png": "44750b7f9ab3003fe31396f9d0ef36bd6d79e5cc",
     "ReportAngularDamages/assets/06_WB_logo_512x512.png": "2b21b91075539a667b4ffd600e5fdd3d57f2f06a",
-    "ReportAngularDamages/assets/Logo-152x152.png": "6d3eadef805ca8b39b43ca5eea25cea8e2b2e16f",
     "ReportAngularDamages/assets/Logo1.jpg": "a4159ec7960246a6e528efd9ed5c2d98381db9ad",
+    "ReportAngularDamages/assets/WB_logo_152x152.png": "1d1bb0f0a3db6f7ad5271e11d3f3c4b661139aa7",
+    "ReportAngularDamages/assets/WB_logo_192x192.png": "1bbb5575cd5ec85d8a40c246deb1b9ca9b82deb7",
     "ReportAngularDamages/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "ReportAngularDamages/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
     "ReportAngularDamages/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
@@ -62,8 +76,8 @@
     "ReportAngularDamages/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "ReportAngularDamages/assets/logo_no_background.png": "4f5ef7a5563fb0e4f5dfe32685eee204ee061c23",
     "ReportAngularDamages/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "ReportAngularDamages/index.html": "d83f5eb9faea210cee999d2ebb5e022356363eba",
-    "ReportAngularDamages/main.517adaf6f583d88284f2.js": "d7471bd14549bd233dc4ed94309449eacd3ec600",
+    "ReportAngularDamages/index.html": "19c71707187dc5d27a751c1768c842bf9c798151",
+    "ReportAngularDamages/main.4e0911842fc3b80d125e.js": "19c6466f5504cee97f3fd55506eaff865bccaceb",
     "ReportAngularDamages/polyfills.05e428c7deb03eca82a1.js": "ce68d153e9b9b6d26b625069c0ee99ae09c6f255",
     "ReportAngularDamages/runtime.b57bf819d5bdce77f1c7.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
     "ReportAngularDamages/styles.37f81cd87ec00ea22374.css": "98af7c7b68ec4d3e5835421f4f930e7d9f7d5d68"

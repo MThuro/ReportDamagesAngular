@@ -48,11 +48,11 @@
             <textarea #comments matInput placeholder="Comments">{{ticket.comments}}</textarea>
         </mat-form-field>
     </fieldset>
-    <div class="divImageInput" *ngIf="!ticket.image">
+    <div class="divImageInput" *ngIf="!ticket.image && navigationService.getDeleteStatus()" >
         <input id="imageInput"  type="file" accept="image/*" (change)=(onFileChanged($event))>
     </div>
     <div *ngIf="ticket.image" class="thumbnail">
-        <span id="imageDelete"><button mat-icon-button  (click)="deleteImage()">
+        <span *ngIf="navigationService.getDeleteStatus()" id="imageDelete"><button mat-icon-button  (click)="deleteImage()">
          <mat-icon>clear</mat-icon>
         </button>
         </span>

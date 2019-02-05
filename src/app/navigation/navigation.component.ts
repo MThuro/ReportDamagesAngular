@@ -25,15 +25,18 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
   }
 
+  //navigate to customer list
   addTicket(): void {
     this.router.navigateByUrl('/customers');
   }
 
+  //delete ticket from database
   deleteTicket(): void{
     this.ticketService.deleteTicket();
     this.router.navigateByUrl('/ticket-list');
   }
   getLoginStatus(): boolean{
+    //return true if user is already logged in, else return false
     if (JSON.parse(localStorage.getItem("login")) == undefined){
       return true;
     }else{
