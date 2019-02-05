@@ -17,6 +17,7 @@ export class UserLoginComponent implements OnInit {
     private navigationService: NavigationService) { }
 
   ngOnInit() {
+    //set Navigation Status for different components
     this.navigationService.setLogoutStatus(false);
     this.navigationService.setDeleteStatus(false);
     this.navigationService.setAddStatus(false);
@@ -26,14 +27,17 @@ export class UserLoginComponent implements OnInit {
   }
 
   login(username: string, password: string): void {
+    //check mandatory fields 
     if(!username || !password){
       this.snackbar.open("Please enter your username and password", "Dismiss",{
         duration: 2000,
       });
       return;
     }
+    //get token from warehouse system
     let success = this.apiService.getToken({ username, password } as User);
     if(success=true){
+      //save username and date to local storage
       localStorage.setItem("username", username);
       localStorage.setItem("logon", "true");
       localStorage.setItem("Date", JSON.stringify(new Date()));

@@ -24,7 +24,7 @@
     }
   ],
   "dataGroups": [{
-    "name": "ticket-data",
+    "name": "api-freshness",
     "urls": [
       "/ticket-list"
     ],

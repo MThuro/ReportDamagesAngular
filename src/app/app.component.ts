@@ -26,14 +26,16 @@ export class AppComponent {
         }
       })};
     if (!firebase.apps.length) {
+      //initialize firebase
       firebase.initializeApp(environment.firebase);
     }
-    let storage = firebase.storage();
+    //if user has already logged on => navigate to ticket list directly
     if(localStorage.getItem("logon") == "true"){
       this.router.navigateByUrl("/ticket-list");
     }else{
       this.router.navigateByUrl("/user-login");
     }
+    //initialize item id for first install
     let id = localStorage.getItem("id");
     if(id == null){
       localStorage.setItem("id", JSON.stringify(0));
