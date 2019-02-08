@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "report-damages"
+    "default": "report-damages",
+    "staging": "report-damages"
   }
 }

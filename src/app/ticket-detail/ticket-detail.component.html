@@ -11,8 +11,7 @@
             <mat-datepicker touchUi #picker2></mat-datepicker>
         </mat-form-field>
         <mat-form-field class="full-width">
-            <mat-select #ticketStatus placeholder="Ticket Status" #ticketStatus value="{{ticket.ticketStatus}}"
-                [disabled]="ticketStatus.value == 'Fixed'">
+            <mat-select #ticketStatus placeholder="Ticket Status" #ticketStatus value="{{ticket.ticketStatus}}">
                 <mat-option value="New">New</mat-option>
                 <mat-option value="In Progress">In Progress</mat-option>
                 <mat-option value="Fixed">Fixed</mat-option>
@@ -20,7 +19,8 @@
         </mat-form-field>
         <mat-form-field class="full-width">
             <mat-select #productStatus id="productStatus" [disabled]="ticketStatus.value == 'Fixed'" placeholder="Product Status"
-                value="{{ticket.productStatus}}">
+                value="{{ticket.productStatus}}" required
+                (valueChange)="onProductStatusChange(productStatus.value)">
                 <mat-option value="Repaired">Repaired</mat-option>
                 <mat-option value="Procured">Procured</mat-option>
                 <mat-option value="Replaced">Replaced</mat-option>

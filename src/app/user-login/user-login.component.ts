@@ -42,6 +42,11 @@ export class UserLoginComponent implements OnInit {
       localStorage.setItem("logon", "true");
       localStorage.setItem("Date", JSON.stringify(new Date()));
       this.router.navigateByUrl('/ticket-list');
+    } else{
+      this.snackbar.open("The username or password is not correct", "Dismiss",{
+        duration: 2000,
+      });
+      return;
     }
   };
 }

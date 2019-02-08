@@ -1,5 +1,9 @@
 {
   "configVersion": 1,
+  "appData": {
+    "version": "1.1.0",
+    "changelog": "Added email service"
+  },
   "index": "ReportAngularDamages/index.html",
   "assetGroups": [
     {
@@ -7,9 +11,8 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "ReportAngularDamages/favicon.ico",
         "ReportAngularDamages/index.html",
-        "ReportAngularDamages/main.a3e9b073b7c03cd50239.js",
+        "ReportAngularDamages/main.372160871a1721ef2e12.js",
         "ReportAngularDamages/polyfills.05e428c7deb03eca82a1.js",
         "ReportAngularDamages/runtime.b57bf819d5bdce77f1c7.js",
         "ReportAngularDamages/styles.37f81cd87ec00ea22374.css"
@@ -75,9 +78,8 @@
     "ReportAngularDamages/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "ReportAngularDamages/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "ReportAngularDamages/assets/logo_no_background.png": "4f5ef7a5563fb0e4f5dfe32685eee204ee061c23",
-    "ReportAngularDamages/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "ReportAngularDamages/index.html": "90632cd15d04f632d28677ba014ec6b32acca8d2",
-    "ReportAngularDamages/main.a3e9b073b7c03cd50239.js": "f73160831623896ab4db28e4fdc9110bc1fedf90",
+    "ReportAngularDamages/index.html": "3d4e028bd67db8645fbf34d03a24d82b9434ec27",
+    "ReportAngularDamages/main.372160871a1721ef2e12.js": "6420f87d7d5a46d6d9619b2615ceed9fd90d0f7d",
     "ReportAngularDamages/polyfills.05e428c7deb03eca82a1.js": "ce68d153e9b9b6d26b625069c0ee99ae09c6f255",
     "ReportAngularDamages/runtime.b57bf819d5bdce77f1c7.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
     "ReportAngularDamages/styles.37f81cd87ec00ea22374.css": "98af7c7b68ec4d3e5835421f4f930e7d9f7d5d68"

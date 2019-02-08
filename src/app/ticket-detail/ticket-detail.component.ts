@@ -1,3 +1,4 @@
+import { ApiService } from './../api.service';
 import { MatSnackBar } from '@angular/material';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { TicketService } from './../ticket.service';
@@ -7,7 +8,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PRODUCTS } from '../mock-products';
 import { NavigationService } from '../navigation.service';
-
 
 @Component({
   selector: 'app-ticket-detail',
@@ -24,10 +24,14 @@ export class TicketDetailComponent implements OnInit {
   productStatusForm = new FormControl();
   selectedFile: File;
   oldURL: string;
+  productStatusChanged: boolean;
+
 
   constructor(public router: Router, private route: ActivatedRoute, 
     private ticketService: TicketService, private afStorage: AngularFireStorage,
-    public snackbar: MatSnackBar, public navigationService: NavigationService) { 
+    public snackbar: MatSnackBar, public navigationService: NavigationService,
+    public apiService: ApiService) { 
+      this.productStatusChanged = false;
   }
   ngOnInit() {
     //set Navigation Status for different components
@@ -40,21 +44,19 @@ export class TicketDetailComponent implements OnInit {
 
     //get ticket data according to id
     this.ticketService.getTicket(this.id).subscribe(ticket => {
-      debugger;
       this.ticket = ticket;
       this.startDateForm.setValue(ticket.startDate.toDate());
       if(ticket.endDate){
         this.endDateForm.setValue(ticket.endDate.toDate());
       };
-      debugger;
       //if status is fixed, it shall not be possible to delete or update the ticket
       if(ticket.ticketStatus == "Fixed"){
-        debugger;
         this.navigationService.setDeleteStatus(false);
         document.getElementById("update").hidden = true;
         document.getElementById("imageInput").hidden = true;
       }
       });
+
   }
   //update ticket with new data
   update(startDate: Date, endDate: string, ticketStatus: string, productStatus: string,
@@ -62,11 +64,19 @@ export class TicketDetailComponent implements OnInit {
     description: string, comments: string): void{
     this.ticket.startDate = new Date(startDate);
     //check if all mandatory fields have been entered -> if not, show message
-    if(!startDate || !ticketStatus || !product || !summary || !quantity){
+    if(!startDate || !ticketStatus || !product || !summary || !quantity || !productStatus){
       this.snackbar.open("Please enter all mandatory fields", "Dismiss",{
-        duration: 2000,
+        duration: 3000,
       });
       return;
+    }
+    if(ticketStatus == 'Fixed'){
+      if(!endDate || !time){
+        this.snackbar.open("Please enter an End Date and Time needed to change the ticket to status Fixed", "Dismiss",{
+          duration: 3000,
+        });
+        return;
+      }
     }
     if(endDate != ""){
       this.ticket.endDate = new Date(endDate);
@@ -91,6 +101,10 @@ export class TicketDetailComponent implements OnInit {
     }else{
       this.ticketService.updateTicket(this.id, this.ticket);
     };
+    //send email to procurement department
+    if(this.ticket.productStatus == 'Procured' && this.productStatusChanged == true){
+      this.apiService.sendEmail(this.ticket);
+    }
     this.router.navigateByUrl('/ticket-list');
   }
   //delete image from Firebase Storage
@@ -115,4 +129,8 @@ export class TicketDetailComponent implements OnInit {
       }
     );
    }
+  onProductStatusChange(status: String): void{
+    debugger;
+    this.productStatusChanged = true;
+  };
 }

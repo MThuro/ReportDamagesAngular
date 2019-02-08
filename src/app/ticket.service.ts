@@ -1,20 +1,24 @@
 import { AngularFireStorage } from 'angularfire2/storage';
-import { map } from 'rxjs/operators';
+import { map, count } from 'rxjs/operators';
 import { Ticket } from './ticket';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { ticketCount } from './ticketCount';
+
 @Injectable({
   providedIn: 'root'
 })
 export class TicketService {
   private ticketCollection: AngularFirestoreCollection<Ticket>;
   private ticketDocument: AngularFirestoreDocument<Ticket>;
+  private ticketCountDocument: AngularFirestoreDocument<ticketCount>;
   tickets: Observable<Ticket[]>;
   ticketsNew: Observable<Ticket[]>;
   ticketsProgress: Observable<Ticket[]>;
   ticketsFixed: Observable<Ticket[]>;
   ticketID: string;
+  count: ticketCount;
   constructor(private afs: AngularFirestore) {
     this.ticketCollection = afs.collection<Ticket>('tickets');
    }
@@ -60,14 +64,10 @@ export class TicketService {
 
   //add ticket to Firebase database
   addTicket(ticket: Ticket){
-    //get current id
-    let id = JSON.parse(localStorage.getItem("id"));
-    id = id + 1;
-    localStorage.setItem("id", id);
-    ticket.id = JSON.stringify(id);
     //get logged on user
-    ticket.user = JSON.parse(localStorage.getItem("username"));
+    ticket.user = localStorage.getItem("username");
     this.ticketCollection.doc(ticket.id).set(ticket);
+    
   }
 
   //get ticket from database
@@ -90,6 +90,16 @@ export class TicketService {
   //set current ticketID
   setTicketID(id:string): void{
     this.ticketID = id;
+  }
+
+  //get currenct ticket count
+  getTicketCount(): Observable<ticketCount>{
+    this.ticketCountDocument = this.ticketCollection.doc("ticket_count");
+    return this.ticketCountDocument.valueChanges();
+  }
+  updateTicketCount(count: ticketCount){
+    debugger;
+    this.ticketCollection.doc("ticket_count").update(count);
   }
 
 }

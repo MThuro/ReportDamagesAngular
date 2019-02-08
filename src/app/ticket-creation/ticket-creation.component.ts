@@ -1,3 +1,4 @@
+import { ApiService } from './../api.service';
 import { NavigationService } from './../navigation.service';
 import { MatSnackBar } from '@angular/material';
 import { PRODUCTS } from './../mock-products';
@@ -8,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { Customer } from '../customer';
 import { AngularFireStorage } from 'angularfire2/storage';
+import { ticketCount } from '../ticketCount';
 
 @Component({
   selector: 'app-ticket-creation',
@@ -22,11 +24,13 @@ export class TicketCreationComponent implements OnInit {
   selectedFile: File;
   downloadURL;
   ticket: Ticket;
+  count: ticketCount;
 
   constructor(private ticketService: TicketService, private router: Router, 
     private route: ActivatedRoute, private afStorage: AngularFireStorage,
     public snackbar: MatSnackBar,
-    private navigationService: NavigationService) { }
+    private navigationService: NavigationService,
+    private apiService: ApiService) { }
 
   ngOnInit() {
     //set Navigation Status for different components
@@ -40,26 +44,38 @@ export class TicketCreationComponent implements OnInit {
     this.dateForm.setValue(this.date);
     //get selected customer
     this.customer.id = this.route.snapshot.paramMap.get('customer');
+    //get ticket count
+    this.ticketService.getTicketCount().subscribe( count =>{
+      //get ticket counter and increase by one
+      count.count = count.count + 1;
+      this.count = count;
+    }
+    );
   }
   //save ticket data to database
   save(startDate: string, endDate, ticketStatus: string, productStatus: string,
     product: string, quantity: number, time: number, summary: string, 
     description: string, comments: string, customer: string): void {
-      if(!startDate || !ticketStatus || !product || !summary || !quantity){
+      if(!startDate || !ticketStatus || !product || !summary || !quantity || !productStatus){
         this.snackbar.open("Please enter all mandatory fields", "Dismiss",{
           duration: 2000,
         });
         return;
       }
+      if(ticketStatus == 'Fixed'){
+        if(!endDate || !time){
+          this.snackbar.open("Please enter an End Date and Time needed to change the ticket to status Fixed", "Dismiss",{
+            duration: 3000,
+          });
+          return;
+        }
+      }
       if(endDate != ""){
         endDate = new Date(endDate);
       }
-      if(productStatus == undefined){
-        productStatus = "";
-      }
       customer = this.customer.id;
       let ticket: Ticket = {
-       id: "",
+       id: JSON.stringify(this.count.count),
        user: "",
        creationDate: new Date(),
        startDate: new Date(startDate),
@@ -80,6 +96,12 @@ export class TicketCreationComponent implements OnInit {
         this.ticketService.addTicket(ticket);
       }else{
         this.uploadFile();
+      }
+      //increase ticket count
+      this.ticketService.updateTicketCount(this.count);
+      //send email to procurement department
+      if(productStatus == 'Procured'){
+        this.apiService.sendEmail(this.ticket);
       }
       this.router.navigateByUrl("/ticket-list");
   };

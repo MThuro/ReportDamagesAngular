@@ -35,10 +35,5 @@ export class AppComponent {
     }else{
       this.router.navigateByUrl("/user-login");
     }
-    //initialize item id for first install
-    let id = localStorage.getItem("id");
-    if(id == null){
-      localStorage.setItem("id", JSON.stringify(0));
-    }
   }
 }
