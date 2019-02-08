@@ -16,7 +16,8 @@ exports.sendEmailHTTPS = functions.https.onCall((data, context) => {
                 + '<p><b>Quantity:</b> '+data.quantity+'</p>'
                 + '<p><b>Customer:</b> '+data.customer+'</p>'
                 + '<p><b>Description:</b> '+data.description+'</p>'
-                + '<p><b>Comments:</b> '+data.comments+'</p>';
+                + '<p><b>Comments:</b> '+data.comments+'</p>'
+                + '<img src='+data.image+'></img>';
     const mailOptions = {
         to: 'mareike.thurau@gmail.com',
         subject: `Damage report by `+ data.user,

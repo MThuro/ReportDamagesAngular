@@ -52,7 +52,8 @@ export class ApiService {
                       product: product.description, startDate: ticket.startDate.toString(),
                       quantity: ticket.quantity, comments: ticket.comments,
                       description: ticket.description,
-                      customer: customer.name }).then(function(result) {
+                      customer: customer.name,
+                      image: ticket.image }).then(function(result) {
           }).catch(function(error) {
             // Getting the Error details.
             var code = error.code;
