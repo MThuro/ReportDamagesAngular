@@ -1,6 +1,5 @@
 import { NavigationService } from './../navigation.service';
 import { PRODUCTS } from './../mock-products';
-import { Product } from './../product';
 import { Ticket } from './../ticket';
 import { Component, OnInit } from '@angular/core';
 import { TicketService } from './../ticket.service';

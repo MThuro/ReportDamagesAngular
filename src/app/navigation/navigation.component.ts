@@ -18,8 +18,8 @@ export class NavigationComponent implements OnInit {
     path: string,
   }
 
-  constructor(changeDetectorRef: ChangeDetectorRef, private router: Router, 
-    private ticketService: TicketService, public navigationService: NavigationService) { 
+  constructor( private router: Router, private ticketService: TicketService,
+    public navigationService: NavigationService) { 
   }
 
   ngOnInit() {

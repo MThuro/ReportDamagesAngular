@@ -1,5 +1,4 @@
-import { Observable } from 'rxjs';
-import { RouterModule, Routes, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { User } from './../user';
 import { ApiService } from './../api.service';
 import { Component, OnInit } from '@angular/core';

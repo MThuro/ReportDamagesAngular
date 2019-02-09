@@ -130,7 +130,6 @@ export class TicketDetailComponent implements OnInit {
     );
    }
   onProductStatusChange(status: String): void{
-    debugger;
     this.productStatusChanged = true;
   };
 }

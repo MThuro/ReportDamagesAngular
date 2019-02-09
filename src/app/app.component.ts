@@ -1,11 +1,8 @@
 import { environment } from './../environments/environment.prod';
 
 import { Component } from '@angular/core';
-import { htmlAstToRender3Ast } from '@angular/compiler/src/render3/r3_template_transform';
 import * as firebase from 'firebase';
-import firestore from 'firebase/firestore';
 import { Router } from '@angular/router';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
 import { SwUpdate } from '@angular/service-worker';
 @Component({
   selector: 'app-root',

@@ -1,5 +1,4 @@
-import { AngularFireStorage } from 'angularfire2/storage';
-import { map, count } from 'rxjs/operators';
+import { map} from 'rxjs/operators';
 import { Ticket } from './ticket';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -98,7 +97,6 @@ export class TicketService {
     return this.ticketCountDocument.valueChanges();
   }
   updateTicketCount(count: ticketCount){
-    debugger;
     this.ticketCollection.doc("ticket_count").update(count);
   }
 
