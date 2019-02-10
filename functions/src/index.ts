@@ -4,8 +4,8 @@ import * as functions from 'firebase-functions';
 // // https://firebase.google.com/docs/functions/typescript
 //
 const nodemailer = require('nodemailer');
-const gmailEmail = encodeURIComponent('mareike.thurau@gmail.com');
-const gmailPassword = encodeURIComponent('21ma1994');
+const gmailEmail = encodeURIComponent(functions.config().gmail.email);
+const gmailPassword = encodeURIComponent(functions.config().gmail.password);
 const mailTransport = nodemailer.createTransport(`smtps://${gmailEmail}:${gmailPassword}@smtp.gmail.com`);
 
 exports.sendEmailHTTPS = functions.https.onCall((data, context) => {
